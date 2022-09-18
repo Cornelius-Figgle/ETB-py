@@ -36,6 +36,8 @@ def input_cycle() -> None:
 
             p = etb_handle(eng_cmd)
             ret = p.decode_cmd()
+            if not ret:
+                print('\tcommand not found, please check spelling & grammar')
         except KeyboardInterrupt:
             break
 
