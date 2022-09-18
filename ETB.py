@@ -24,19 +24,14 @@ class etb_handle():
                     print(self.user_vars[''.join(str_cmd[1:])])
                 except KeyError: 
                     text = ' '.join(str_cmd[1:])
-                    
-                    while True: 
-                        index = text.find('\\')
-                        if index != -1:
-                            text = text.replace(
-                                r'\n', '\n').replace(
-                                    r'\t', '\t').replace(
-                                        r'\r', '\r').replace(
-                                        r'\\', '\\')
-                            for var in self.user_vars.keys():
-                                text = text.replace(f'\\{var}\\', f'{self.user_vars[f"{var}"]}')
-                        else: break
-
+                    text = text.replace(
+                        r' newline ', '\n').replace(
+                            r' tab ', '\t').replace(
+                                r' reset caret ', '\r').replace(
+                                    r'\\', '\\')
+                    for var in self.user_vars.keys():
+                        text = text.replace(f'variable {var}', f'{self.user_vars[f"{var}"]}')
+                        
                     print(text)
 
                 return True
