@@ -1,11 +1,11 @@
-from . import interactive_shell
+from . import interactive_shell as sh
 
 #________________________________________________________________________________________________________________________________
 
-def main():
+def determine_cmd_action():
     print('Hello World!\n')
 
 #________________________________________________________________________________________________________________________________
 
 if __name__ == '__main__': 
-    interactive_shell.main()
+    sh.main()
