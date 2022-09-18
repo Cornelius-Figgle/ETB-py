@@ -6,25 +6,26 @@ class etb_handle():
     def __init__(self, eng_cmd: str) -> None:
         self.eng_cmd = str(eng_cmd).lower()
 
-        self.all_starters = [
-            'set',
-            'display',
-            'if'
-        ]
+        self.vars = {}
 
-        self.cmd_to_use = None
+    def decode_cmd(self) -> bool:
+        num_of_params = self.eng_cmd.count(' ')
+        str_cmd = self.eng_cmd.strip().split(' ', num_of_params)[0]
 
-    def decode_start(self) -> int | None:
-        starter = self.eng_cmd.split(' ', 1)[0]
+        match str_cmd[0]:
+            case 'set':
+                var_to_set = str_cmd[1]
+                value_to_set = str_cmd[3]
 
-        if starter in self.all_starters:
-            self.cmd_to_use = self.all_starters.index(starter)
-            return self.cmd_to_use
-        else:
-            return None
+                self.vars[var_to_set] = value_to_set
 
-    def determine_rest(self):
-        pass
+                return True
+            case 'display':
+                print(' '.join(str_cmd[1:]))
+
+                return True
+            case _:
+                return False
 
 #________________________________________________________________________________________________________________________________
 
@@ -34,8 +35,7 @@ def input_cycle() -> None:
             eng_cmd = input('> ')
 
             p = etb_handle(eng_cmd)
-            p.decode_start()
-            p.determine_rest()
+            p.decode_cmd()
         except KeyboardInterrupt:
             break
 
