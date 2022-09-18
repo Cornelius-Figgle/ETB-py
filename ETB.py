@@ -19,11 +19,11 @@ class etb_handle():
 
                 self.vars[var_to_set] = value_to_set
 
-                return self.vars[var_to_set]
+                return True
             case 'display':
-                return ' '.join(str_cmd[1:])
+                print(' '.join(str_cmd[1:]))
             case _:
-                return None
+                return False
 
 #________________________________________________________________________________________________________________________________
 
@@ -34,7 +34,6 @@ def input_cycle() -> None:
 
             p = etb_handle(eng_cmd)
             ret = p.decode_cmd()
-            print(ret)
         except KeyboardInterrupt:
             break
 
