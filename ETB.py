@@ -20,8 +20,10 @@ class etb_handle():
 
                 return True
             case 'display':
-                print(self.vars[str_cmd[1:]])
-                #print(' '.join(str_cmd[1:]))
+                try: print(self.vars[''.join(str_cmd[1:])])
+                except KeyError: print(' '.join(str_cmd[1:]))
+
+                return True
             case _:
                 return False
 
