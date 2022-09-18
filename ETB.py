@@ -12,14 +12,14 @@ class etb_handle():
         str_cmd = self.eng_cmd.strip().split(' ', num_of_params)
 
         match str_cmd[0]:
-            case 'set':
+            case 'set': # `set x to 4`
                 var_to_set = str_cmd[1]
                 value_to_set = str_cmd[3]
 
                 self.vars[var_to_set] = value_to_set
 
                 return True
-            case 'display':
+            case 'display': # `display x`
                 try: print(self.vars[''.join(str_cmd[1:])])
                 except KeyError: print(' '.join(str_cmd[1:]))
 
