@@ -2,11 +2,10 @@
 #________________________________________________________________________________________________________________________________
 
 class etb_handle():
+    vars = {}
 
     def __init__(self, eng_cmd: str) -> None:
         self.eng_cmd = str(eng_cmd).lower()
-
-        self.vars = {}
 
     def decode_cmd(self) -> bool:
         num_of_params = self.eng_cmd.count(' ')
@@ -21,7 +20,8 @@ class etb_handle():
 
                 return True
             case 'display':
-                print(' '.join(str_cmd[1:]))
+                print(self.vars[str_cmd[1:]])
+                #print(' '.join(str_cmd[1:]))
             case _:
                 return False
 
