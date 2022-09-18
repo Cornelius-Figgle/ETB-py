@@ -2,31 +2,48 @@
 #________________________________________________________________________________________________________________________________
 
 class etb_handle():
-    def __init__(self, eng_cmd: str) -> None:
-        self.eng_cmd = str(eng_cmd)
-        self.starter = None
 
-    def decode_start(self) -> str:
-        self.starter = self.eng_cmd.split(' ', 0)
+    def __init__(self, eng_cmd: str) -> None:
+        self.eng_cmd = str(eng_cmd).lower()
+
+        self.all_starters = [
+            'set',
+            'display',
+            'if'
+        ]
+
+        self.cmd_to_use = None
+
+    def decode_start(self) -> int | None:
+        starter = self.eng_cmd.split(' ', 0)
+
+        if starter in self.all_starters:
+            self.cmd_to_use = self.all_starters.index(starter)
+            return self.cmd_to_use
+        else:
+            return None
+
+    def determine_rest(self):
+        pass
 
 #________________________________________________________________________________________________________________________________
 
 def input_cycle() -> None:
-    eng_cmd = input('> ')
+    while True: 
+        try: 
+            eng_cmd = input('> ')
 
-    p = etb_handle(eng_cmd)
-    p.decode_start()
+            p = etb_handle(eng_cmd)
+            p.decode_start()
+            p.determine_rest()
+        except KeyboardInterrupt:
+            break
 
 def main() -> None:
     print('Hello World!\n')
-
-    while True: 
-        try: 
-            input_cycle()
-        except KeyboardInterrupt:
-            break
+    input_cycle()
 
 #________________________________________________________________________________________________________________________________
 
 if __name__ == '__main__': 
-    main()
+    input_cycle()
