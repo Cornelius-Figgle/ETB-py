@@ -4,7 +4,7 @@ ETB-py is an interactive English-language shell built in Python
 
 ## Installation
 
-[Python >= 3.10](https://www.python.org/downloads/) will need to be installed if it isn't already
+[Python 3.10 or higher](https://www.python.org/downloads/) will need to be installed if it isn't already
 
 You can then either clone the repo or download the zip from GitHub
 
@@ -19,7 +19,23 @@ git clone https://github.com/Cornelius-Figgle/ETB-py.git
 - [ETB-py source code](https://github.com/Cornelius-Figgle/ETB-py)
 - [Python >= 3.10](https://www.python.org/downloads/)
 
-Then you should be able to run the `interactive_shell.py` file from wherever you cloned the repo/extracted the zip to
+### Syntax
+
+```shell
+set <variable> to <value>
+
+display <value|variable>
+```
+
+### Examples
+
+```shell
+> set x to 4
+> display hello world
+hello world
+> display x
+4
+```
 
 ## License
 
