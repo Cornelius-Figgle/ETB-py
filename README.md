@@ -24,7 +24,7 @@ git clone https://github.com/Cornelius-Figgle/ETB-py.git
 ```shell
 set <variable> to <value>
 
-display <value|variable>
+display <value>
 ```
 
 ### Examples
@@ -33,7 +33,7 @@ display <value|variable>
 > set x to 4
 > display hello world
 hello world
-> display x
+> display variable x
 4
 ```
 
