@@ -10,7 +10,7 @@ class etb_handle():
 
     def decode_cmd(self) -> bool:
         num_of_params = self.eng_cmd.count(' ')
-        str_cmd = self.eng_cmd.strip().split(' ', num_of_params)[0]
+        str_cmd = self.eng_cmd.strip().split(' ', num_of_params)
 
         match str_cmd[0]:
             case 'set':
@@ -19,13 +19,11 @@ class etb_handle():
 
                 self.vars[var_to_set] = value_to_set
 
-                return True
+                return self.vars[var_to_set]
             case 'display':
-                print(' '.join(str_cmd[1:]))
-
-                return True
+                return ' '.join(str_cmd[1:])
             case _:
-                return False
+                return None
 
 #________________________________________________________________________________________________________________________________
 
@@ -35,7 +33,8 @@ def input_cycle() -> None:
             eng_cmd = input('> ')
 
             p = etb_handle(eng_cmd)
-            p.decode_cmd()
+            ret = p.decode_cmd()
+            print(ret)
         except KeyboardInterrupt:
             break
 
