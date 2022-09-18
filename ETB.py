@@ -15,7 +15,7 @@ class etb_handle():
         self.cmd_to_use = None
 
     def decode_start(self) -> int | None:
-        starter = self.eng_cmd.split(' ', 0)
+        starter = self.eng_cmd.split(' ', 1)[0]
 
         if starter in self.all_starters:
             self.cmd_to_use = self.all_starters.index(starter)
